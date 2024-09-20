@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class ElectricityBillingSystem {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter customer name: ");
+        String customerName = scanner.nextLine();
+        
+        System.out.print("Enter number of units consumed: ");
+        double unitsConsumed = scanner.nextDouble();
+
+        double billAmount = calculateBill(unitsConsumed);
+
+        System.out.println("\nElectricity Bill");
+        System.out.println("Customer Name: " + customerName);
+        System.out.println("Units Consumed: " + unitsConsumed);
+        System.out.println("Total Amount: $" + billAmount);
+    }
+
+    public static double calculateBill(double units) {
+        double bill = 0;
+
+        if (units <= 100) {
+            bill = units * 1.5;
+        } else if (units <= 300) {
+            bill = 100 * 1.5 + (units - 100) * 2.0;
+        } else {
+            bill = 100 * 1.5 + 200 * 2.0 + (units - 300) * 3.0;
+        }
+
+        bill += 50;
+
+        return bill;
+    }
+} 
